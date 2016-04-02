@@ -9,6 +9,11 @@ class BooksController < ApplicationController
 
     def create
         @book = Book.new(book_param)
+        if @book.save
+            redirect_to root_path
+        else
+            render 'new'
+        end
     end
 
     private
