@@ -1,5 +1,10 @@
 <h1>My Books</h1>
 
-<% @books.each do |book| %>
-    <h2><%= link_to book.title, book_path(book) %></h2>
+<h2><%= params[:category] if @category_id %></h2>
+<% if @books.count == 0 %>
+    <b>This category no books</b>
+<% else %>
+    <% @books.each do |book| %>
+        <h3><%= link_to book.title, book_path(book) %></h3>
+    <% end %>
 <% end %>
